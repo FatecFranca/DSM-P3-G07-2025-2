@@ -1,6 +1,6 @@
 # DSM-P3-G07-2025-2
 
-Repositório do GRUPO 07 do Projeto Interdisciplinar do 3º semestre DSM 2025/2. Alunos: JULIANO FERREIRA NOEL LEMOS Juliano Ferreira Noel Lemos, Leonardo Sudario Delfino de Oliveira Flavio, Roberta Carreira Barcarollo.
+Repositório do GRUPO 07 do Projeto Interdisciplinar do 3º semestre DSM 2025/2. Alunos: Juliano Ferreira Noel Lemos, Leonardo Sudario Delfino de Oliveira Flavio, Roberta Carreira Barcarollo.
 
 # Gym & Client Management App
 

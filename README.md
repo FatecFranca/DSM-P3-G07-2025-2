@@ -1,3 +1,7 @@
+# DSM-P3-G07-2025-2
+
+Repositório do GRUPO 07 do Projeto Interdisciplinar do 3º semestre DSM 2025/2. Alunos: JULIANO FERREIRA NOEL LEMOS Juliano Ferreira Noel Lemos, Leonardo Sudario Delfino de Oliveira Flavio, Roberta Carreira Barcarollo.
+
 # Gym & Client Management App
 
 This project is a **full-stack application** for managing gyms and clients, built with **React (frontend)** and **Node.js/Express with MongoDB (backend)**. It features user authentication (sign up & login), gym registration, client check-in/check-out, and secure API endpoints.
@@ -31,7 +35,7 @@ This project is a **full-stack application** for managing gyms and clients, buil
 
 - **Frontend:** React.js
 - **Backend:** Node.js, Express.js
-- **Database:** MongoDB (via Mongoose)
+- **Database:** MongoDB
 - **Authentication:** JWT, bcryptjs
 
 ---

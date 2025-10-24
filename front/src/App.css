@@ -61,6 +61,7 @@ li {
   padding: 50vh;
   text-align: center;
   white-space: nowrap;
+
 }
 
 
@@ -237,4 +238,39 @@ input {
 .sign-button {
   margin-top: 15px;
   margin-left: 80px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 850px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+
+
+.contact-page h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25vh;
+}
+
+.contact-page form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact-page {
+  background-image: url(https://t3.ftcdn.net/jpg/08/27/87/60/360_F_827876077_k0EWo3jSiWZPR8fRgsSbZFT9SkrozNuj.jpg);
+  background-size: cover;
+  height: 10vh;
 }

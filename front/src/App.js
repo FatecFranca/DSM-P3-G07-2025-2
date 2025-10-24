@@ -95,7 +95,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={
             <>
-              <InputGym onGymAdded={handleGymAdded} />
+
 
               <Contact />
             </>

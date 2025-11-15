@@ -42,7 +42,7 @@ function Home() {
         fetchClients();
     }, []);
 
-
+    console.log(clients);
     return (
         <>
 

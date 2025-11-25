@@ -1,169 +1,204 @@
 # Gym & Client Management App
 
-This project is a **full-stack application** for managing gyms and clients, built with **React (frontend)** and **Node.js/Express with MongoDB (backend)**. It features user authentication (sign up & login), gym registration, client check-in/check-out, and secure API endpoints.
+Repositório do Grupo 07 — Projeto Interdisciplinar DSM (3º semestre, 2025/2)  
+Alunos: Juliano Ferreira, Noel Lemos, Leonardo Sudário, Delfino de Oliveira Flávio, Roberta Carreira Barcarollo.  
+Descrição curta: Aplicação full‑stack para gerenciamento de academias e clientes com autenticação, check‑in/check‑out e API protegida.
 
 ---
 
-## Features
+[🎬 Elevator Pitch — Assista aqui](https://youtu.be/smQMLMZb7UY)
 
-- **User Authentication:**  
-  Secure sign up and login with JWT and password hashing.
+Resumo rápido: plataforma web para cadastrar academias, registrar entrada/saída de clientes, controlar ocupação e gerenciar usuários com segurança (JWT + hashing de senhas).
 
-- **Gym Management:**
+---
 
-  - Register new gyms.
-  - Delete gyms.
-  - View all registered gyms.
-  - Track gym occupancy.
+## Principais funcionalidades
 
-- **Client Management:**
-
-  - Register new clients (check-in).
-  - Check-out clients.
-  - View all clients.
-
-- **Protected Routes:**  
-  All sensitive API endpoints are protected with JWT authentication.
+- Autenticação de usuários (signup / login) com JWT e senha hashed (bcryptjs).
+- Cadastro, listagem e remoção de academias (gyms).
+- Check‑in (registro de cliente) e check‑out.
+- Controle de ocupação por academia.
+- Endpoints protegidos por middleware de autenticação.
 
 ---
 
 ## Tech Stack
 
-- **Frontend:** React.js
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB (via Mongoose)
-- **Authentication:** JWT, bcryptjs
+- Frontend: React.js (JavaScript, HTML, CSS)
+- Backend: Node.js + Express
+- Banco de dados: MongoDB (Mongoose)
+- Autenticação: JWT, bcryptjs
+
+Linguagens no repositório: JavaScript (≈87.7%), CSS (≈9%), HTML (≈3.3%).
 
 ---
 
-## Getting Started
+## Demonstração rápida
 
-### Prerequisites
+- Backend padrão: http://localhost:5000  
+- Frontend padrão: http://localhost:3000
 
-- Node.js & npm
-- MongoDB (running locally or via Atlas)
-
----
-
-### Backend Setup
-
-1. **Install dependencies:**
-
-   ```bash
-   npm install express cors mongoose jsonwebtoken bcryptjs
-   ```
-
-2. **Start MongoDB** (locally):
-
-   ```bash
-   mongod
-   ```
-
-3. **Run the server:**
-   ```bash
-   node server.js
-   ```
-   The backend runs on [http://localhost:5000](http://localhost:5000).
+(Se você hospedar ou usar Docker, atualize os links / variáveis de ambiente.)
 
 ---
 
-### Frontend Setup
+## Instalação (local)
 
-1. **Install dependencies:**
+Pré‑requisitos:
+- Node.js (recomendo >= 18)
+- npm ou yarn
+- MongoDB (localmente ou Atlas)
 
-   ```bash
-   npm install
-   ```
+1) Clone
+```bash
+git clone https://github.com/FatecFranca/DSM-P3-G07-2025-2.git
+cd DSM-P3-G07-2025-2
+```
 
-2. **Start the React app:**
-   ```bash
-   npm start
-   ```
-   The frontend runs on [http://localhost:3000](http://localhost:3000) by default.
+2) Backend
+```bash
+cd backend
+npm install
+cp .env.example .env   # ajustar variáveis
+npm run dev            # ou: node server.js
+```
 
----
+3) Frontend
+```bash
+cd frontend
+npm install
+npm start
+```
 
-## API Endpoints
-
-### Authentication
-
-- `POST /signup`  
-  Register a new user.  
-  **Body:** `{ "username": "user", "password": "pass" }`
-
-- `POST /login`  
-  Login existing user.  
-  **Body:** `{ "username": "user", "password": "pass" }`  
-  **Returns:** `{ "token": "JWT_TOKEN" }`
-
-### Gyms
-
-- `GET /gyms`  
-  Get all gyms (protected).
-
-- `POST /gyms`  
-  Create a new gym (protected).  
-  **Body:** `{ "name": "...", "address": "...", "phone": "...", "capacity": 20 }`
-
-- `DELETE /gyms/:id`  
-  Delete a gym by ID (protected).
-
-### Clients
-
-- `GET /clients`  
-  Get all clients (protected).
-
-- `POST /clients`  
-  Register a new client (check-in) (protected).  
-  **Body:** `{ "name": "...", "email": "...", "phone": "...", "gymName": "..." }`
-
-- `POST /clients/checkout`  
-  Check out a client (protected).  
-  **Body:** `{ "name": "...", "gymName": "..." }`
+Usando Docker (opcional):
+```bash
+docker compose up --build
+```
 
 ---
 
-## File Structure
+## Exemplo .env (ajuste conforme implementação)
+```
+# Backend
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/gymdb
+JWT_SECRET=uma_chave_super_secreta
+TOKEN_EXPIRES_IN=1d
 
+# Frontend
+REACT_APP_API_URL=http://localhost:5000
+```
+
+Nunca comite o arquivo `.env` real.
+
+---
+
+## Endpoints (resumo)
+
+Autenticação
+- POST /signup
+  - Body: { "username", "password" }
+- POST /login
+  - Body: { "username", "password" }
+  - Retorna: { "token": "JWT_TOKEN" }
+
+Gyms (protegido — Authorization: Bearer TOKEN)
+- GET /gyms
+- POST /gyms
+  - Body: { "name", "address", "phone", "capacity" }
+- DELETE /gyms/:id
+
+Clients (protegido)
+- GET /clients
+- POST /clients
+  - Body: { "name", "email", "phone", "gymName" }  // check-in
+- POST /clients/checkout
+  - Body: { "name", "gymName" }  // check-out
+
+Exemplo de chamada protegida:
+```bash
+curl -H "Authorization: Bearer <TOKEN>" http://localhost:5000/gyms
+```
+
+(Revisar e documentar rotas completas no código / Swagger / Postman collection.)
+
+---
+
+## Estrutura do projeto (resumida)
 ```
 backend/
   server.js
+  routes/
+  controllers/
   models/
-    User.js
-    Gym.js
-    Client.js
+  middlewares/
+  package.json
 
 frontend/
   src/
     components/
-      Login.js
-      InputGym.js
-      Inputs.js
-      Dashboard.js
-      NavBar.js
-      ...
+    pages/
+    services/   # api client (axios/fetch)
     App.js
-    ...
+  package.json
+
+docs/
+  elevator-pitch.pdf (opcional)
+.env.example
+README.md
 ```
 
 ---
 
-## Security Notes
+## Testes e qualidade
 
-- Passwords are **hashed** before saving to the database.
-- JWT is used for session management; tokens are stored in `localStorage` on the frontend.
-- All gym and client endpoints require a valid JWT.
-
----
-
-## License
-
-MIT
+- Rodar testes unitários (se configurado): `npm test` (backend/frontend conforme pasta)
+- Linter: configure ESLint + Prettier
+- Recomendações: cobertura mínima para regras de negócio (check-in, ocupação), testes e2e (Cypress/Playwright)
 
 ---
 
-## Acknowledgments
+## Boas práticas de segurança
 
-- [Express.js Documentation](https://expressjs.com/)
-- [React Documentation](https://react.dev/)
-- [MongoDB Documentation](https://www.mongodb.com/docs/)
+- Não salvar JWT permanentemente sem expiração adequada.
+- Hashear senhas (bcrypt/argon2).
+- Validar/identificar duplicidade no check‑in.
+- Validar limites de capacidade da academia antes do check‑in.
+- Sanitizar entradas (proteção a XSS/NoSQL injection).
+- Rate limit em endpoints sensíveis (ex.: login).
+
+---
+
+## Fluxos críticos a testar manualmente
+
+- Cadastro de usuário / login / renovação de token
+- Cadastro de academia e verificação de capacidade
+- Check‑in de clientes (quando capacidade atingida recusar)
+- Check‑out de clientes (atualizar ocupação)
+- Remoção de academia com clientes associados (política: impedir / migrar / remover)
+
+---
+
+## Sugestões de melhorias futuras
+
+- Dashboard com gráficos de ocupação (Chart.js / Recharts)
+- Notificações em tempo real (WebSockets) para ocupação
+- Exportar relatórios (CSV / PDF)
+- Controle de permissões (roles: admin, staff)
+- Integração contínua (GitHub Actions) + deploy automático
+- Containerização completa e infra como código
+
+---
+
+## Contribuição
+
+1. Abra uma issue descrevendo a proposta.
+2. Crie branch com nome `feat/<nome>` ou `fix/<nome>`.
+3. Faça PR com descrição, prints, e testes.
+4. Use conventional commits.
+
+---
+
+## Licença
+
+MIT.

@@ -1,7 +1,7 @@
 # Gym & Client Management App
 
 Repositório do Grupo 07 — Projeto Interdisciplinar DSM (3º semestre, 2025/2)  
-Alunos: Juliano Ferreira, Noel Lemos, Leonardo Sudário, Delfino de Oliveira Flávio, Roberta Carreira Barcarollo.  
+Alunos: Juliano Ferreira, Noel Lemos, Leonardo Sudário Delfino de Oliveira Flávio, Roberta Carreira Barcarollo.  
 Descrição curta: Aplicação full‑stack para gerenciamento de academias e clientes com autenticação, check‑in/check‑out e API protegida.
 
 ---

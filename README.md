@@ -6,7 +6,7 @@ Descrição curta: Aplicação full‑stack para gerenciamento de academias e cl
 
 ---
 
-[🎬 Elevator Pitch — Assista aqui](https://youtu.be/smQMLMZb7UY)
+
 
 Resumo rápido: plataforma web para cadastrar academias, registrar entrada/saída de clientes, controlar ocupação e gerenciar usuários com segurança (JWT + hashing de senhas).
 
